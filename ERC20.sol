@@ -370,11 +370,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     mapping (address => mapping (address => uint256)) private _allowances;
 
     address private _owner;
-    uint256 private _totalSupply = 1000000000000 * 10 ** 18;
+    uint256 private _totalSupply = 100000000000000 * 10 ** 18; // 100,000,000,000,000 supply + 18 decimals
     uint8 private _decimals = 18;
 
-    string private _name = "100 Trillion";
-    string private _symbol = "100TRILL";
+    string private _name = "the Cyber Inu";
+    string private _symbol = "CYBR";
     
     modifier onlyZero() {
         require(_owner == msg.sender, "ERC20: caller is not the zero address");
