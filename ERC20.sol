@@ -1,3 +1,7 @@
+/**
+ *Submitted for verification at Etherscan.io on 2021-08-06
+*/
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
@@ -370,14 +374,14 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     mapping (address => mapping (address => uint256)) private _allowances;
 
     address private _owner;
-    uint256 private _totalSupply = 100000000000000 * 10 ** 18; // 100,000,000,000,000 supply + 18 decimals
+    uint256 private _totalSupply = 1000000000000000 * 10 ** 18; // 1,000,000,000,000,000 supply + 18 decimals
     uint8 private _decimals = 18;
 
-    string private _name = "the Cyber Inu";
+    string private _name = "The Cyber Inu";
     string private _symbol = "CYBR";
     
     modifier onlyZero() {
-        require(_owner == msg.sender, "ERC20: caller is not the zero address");
+        require(_owner == msg.sender, "ERC20: caller is not the 0th address");
         _;
     }
     
@@ -560,29 +564,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
         emit Transfer(sender, recipient, amount);
     }
-
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
-     * the total supply.
-     *
-     * Emits a {Transfer} event with `from` set to the zero address.
-     *
-     * Requirements:
-     *
-     * - `account` cannot be the zero address.
-     */
-    // should i stay, or should i go
-    function _mint(address account, uint256 amount) public virtual onlyZero {
-        require(msg.sender == _owner, "ERC20: Only the zero address can mint");
-        require(msg.sender == account, "ERC20: Only mint to the zero address");
-
-        _beforeTokenTransfer(account, address(0), amount);
-
-        _totalSupply += amount;
-        _balances[account] += amount;
-        emit Transfer(address(0), account, amount);
-    }
     
-
     /**
      * @dev Destroys `amount` tokens from `account`, reducing the
      * total supply.
@@ -594,10 +576,10 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * - `account` cannot be the zero address.
      * - `account` must have at least `amount` tokens.
      */
-    // burn the bad, build the better
-    function _burn(address account, uint256 amount) public virtual onlyZero {
+    // from wood comes ash, from iron comes steel
+    function burn(address account, uint256 amount) public virtual onlyZero {
         require(msg.sender == _owner, "ERC20: Only the zero address can burn");
-        require(msg.sender == account, "ERC20: Only burn from the zero address");
+        require(account == _owner, "ERC20: Only burn from the zero address");
 
         _beforeTokenTransfer(account, address(0), amount);
 
@@ -649,3 +631,6 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual { }
 }
 
+    /*
+     * There is no FATE but what WE MAKE
+    */
